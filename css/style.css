@@ -2,8 +2,49 @@ body {
     text-align: center;
 }
 
-button {
+.button {
     font-size: 14px;
-    padding: 20px 20px;
-    border-radius: 8px;
+    padding: 40px 40px;
+    border-radius: 10px;
+}
+
+.btn-start {
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 6px;
+}
+.btn-start:hover {
+    background-color: lightgray;
+}
+
+.btn-red.button{
+    background-color: red;
+}
+.btn-red.button:hover{
+    background-color: lightsalmon;
+}
+
+.btn-yellow.button{
+    background-color: yellow;
+}
+.btn-yellow.button:hover{
+    background-color: lightyellow;
+}
+
+.btn-blue.button{
+    background-color: blue;
+}
+.btn-blue.button:hover{
+    background-color: lightblue;
+}
+
+.btn-green.button{
+    background-color: green;
+}
+.btn-green.button:hover{
+    background-color: lightgreen;
+}
+
+.p1{
+    font-size: 18px;
 }
