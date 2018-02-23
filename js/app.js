@@ -1,12 +1,8 @@
 window.onload = function() {
-    redButton = document.getElementById('redButton');
     this.document.getElementById('start').onclick = startGame;
 }
 
-let redButton;//document.getElementById('redButton');
-//blinkButton(redButton);
-function blinkButton(button, orgColor, lightColor) {    
-    console.log('hi');
+function blinkButton(button, orgColor, lightColor) {
     setTimeout(() => {
         button.style.backgroundColor = lightColor;
         setTimeout(() => {
@@ -15,10 +11,39 @@ function blinkButton(button, orgColor, lightColor) {
     }, 500);
 }
 
-let answer = [];
+let level = 1;
+let answer;
 function startGame(){
-    if(answer.length == 0) {
-        
-    }    
+    answer = [];
+    for(let i = 0; i < level; i++) {
+        let color = Math.floor(Math.random() * 4);
+        answer.push(color);        
+    }     
+    runQuestion(answer);
+    level++;
 }
-//setInterval(function(){blinkButton(redButton, 'hello');}, 10000);
+
+async function runQuestion(answer) { 
+    //console.log(answer);
+    for(let color of answer) {
+        switch(color) {            
+            case 0:
+                blinkButton(document.getElementById('redButton'), 'red', 'lightsalmon');
+                break;
+            case 1:
+                blinkButton(document.getElementById('greenButton'), 'green', 'lightgreen');
+                break;
+            case 2:
+                blinkButton(document.getElementById('blueButton'), 'blue', 'lightblue');
+                break;
+            case 3:
+                blinkButton(document.getElementById('yellowButton'), 'yellow', 'lightyellow');
+                break;
+        }
+        await sleep(1000);
+    }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
