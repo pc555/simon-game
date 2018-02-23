@@ -25,10 +25,10 @@ body {
 }
 
 .btn-yellow.button{
-    background-color: yellow;
+    background-color: gold;
 }
 .btn-yellow.button:hover{
-    background-color: lightyellow;
+    background-color: yellow;
 }
 
 .btn-blue.button{

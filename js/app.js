@@ -84,7 +84,7 @@ async function runQuestion(answer) {
                 blinkButton(document.getElementById('blueButton'), 'blue', 'lightblue');
                 break;
             case 3:
-                blinkButton(document.getElementById('yellowButton'), 'yellow', 'lightyellow');
+                blinkButton(document.getElementById('yellowButton'), 'gold', 'yellow');
                 break;
         }
         await sleep(1000);
