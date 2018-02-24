@@ -16,8 +16,11 @@ function blinkButton(button, orgColor, lightColor) {
 }
 
 let level = 1;
+let bestLevel = 1;
 let answer;
 function startGame(){
+    updateLevelText();
+    updateGameStatus('');
     document.getElementById('start').disabled = true;
     console.log(document.getElementById('start').disabled);
     answer = [];
@@ -30,7 +33,7 @@ function startGame(){
 
 function checkAnswer(){
     if(answer == undefined || answer.length == 0) {
-        alert('Please click start to play the game!');
+        updateGameStatus('Please click start to play the game!');
         return;
     }
 
@@ -54,20 +57,24 @@ function checkAnswer(){
 
     if(correct){ 
         if(answer.length == 0) {
-            alert('Good Job!');
             level++;            
+            updateGameStatus('Good Job! Click Start to begin level ' + level + ' challenge!');
         }
     }
     else {
         level = 1; //reset level
         answer = [];
-        alert('Loser!!');
+        updateGameStatus('Game Over!! Click Start to restart the game!');
     }
-    updateLevelText();
 }
 
-function updateLevelText() {
-    document.getElementById('level').innerHTML = "Current Level : " + level;
+function updateLevelText() {    
+    bestLevel = Math.max(level, bestLevel);
+    document.getElementById('level').innerHTML = `Current Level: ${level}&nbsp;&nbsp;&nbsp;Best Level: ${bestLevel}`;
+}
+
+function updateGameStatus(status) {
+    document.getElementById('status').innerHTML = status;
 }
 
 async function runQuestion(answer) { 
@@ -84,7 +91,7 @@ async function runQuestion(answer) {
                 blinkButton(document.getElementById('blueButton'), 'blue', 'lightblue');
                 break;
             case 3:
-                blinkButton(document.getElementById('yellowButton'), 'gold', 'yellow');
+                blinkButton(document.getElementById('yellowButton'), 'gold', 'lightgoldenrodyellow');
                 break;
         }
         await sleep(1000);
