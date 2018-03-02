@@ -17,31 +17,47 @@ body {
     background-color: lightgray;
 }
 
-.btn-red.button{
+.btn-red{
     background-color: red;
+    transition: background-color 0.7s;
 }
-.btn-red.button:hover{
+.btn-red:hover{
+    background-color: lightsalmon;
+}
+.btn-lightred{
     background-color: lightsalmon;
 }
 
-.btn-yellow.button{
+.btn-yellow{
     background-color: gold;
+    transition: background-color 0.7s;
 }
-.btn-yellow.button:hover{
+.btn-lightyellow{
+    background-color: lightgoldenrodyellow;
+}
+.btn-yellow:hover{
     background-color: lightgoldenrodyellow;
 }
 
-.btn-blue.button{
+.btn-blue{
     background-color: blue;
+    transition: background-color 0.7s;
 }
-.btn-blue.button:hover{
+.btn-lightblue{
+    background-color: lightblue;
+}
+.btn-blue:hover{
     background-color: lightblue;
 }
 
-.btn-green.button{
+.btn-green{
     background-color: green;
+    transition: background-color 0.5s;
 }
-.btn-green.button:hover{
+.btn-lightgreen{
+    background-color: lightgreen;
+}
+.btn-green:hover{
     background-color: lightgreen;
 }
 

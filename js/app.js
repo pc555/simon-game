@@ -1,18 +1,22 @@
 window.onload = function() {
-    this.document.getElementById('start').onclick = startGame;
-    document.getElementById('redButton').onclick = checkAnswer;
-    document.getElementById('blueButton').onclick = checkAnswer;
-    document.getElementById('yellowButton').onclick = checkAnswer;
-    document.getElementById('greenButton').onclick = checkAnswer;
+    document.getElementById('start').onclick = startGame;
+    
+    //Add transitionend to all buttons that need to change color
+    document.querySelectorAll('button[data-light]').forEach(button => {
+        const style = button.getAttribute('data-light');
+
+        button.addEventListener('transitionend', (e) => {
+            e.target.classList.remove(style);
+        })
+        
+        button.addEventListener('click', checkAnswer);
+    })
 }
 
-function blinkButton(button, orgColor, lightColor) {
-    setTimeout(() => {
-        button.style.backgroundColor = lightColor;
-        setTimeout(() => {
-            button.style.backgroundColor = orgColor;
-        }, 500);        
-    }, 500);
+
+
+function blinkButton(button) {
+    button.classList.add(button.getAttribute('data-light'));
 }
 
 let level = 1;
@@ -22,7 +26,6 @@ function startGame(){
     updateLevelText();
     updateGameStatus('');
     document.getElementById('start').disabled = true;
-    console.log(document.getElementById('start').disabled);
     answer = [];
     for(let i = 0; i < level; i++) {
         let color = Math.floor(Math.random() * 4);
@@ -38,24 +41,8 @@ function checkAnswer(){
     }
 
     let ans = answer.splice(0, 1);
-    let correct = false;
-    //console.log(this.id);
-    switch(this.id) {
-        case 'redButton':
-            correct = ans == 0;
-            break;
-        case 'greenButton':
-            correct = ans == 1;
-            break;
-        case 'blueButton':
-            correct = ans == 2;
-            break;
-        case 'yellowButton':
-            correct = ans == 3;
-            break;
-    }
 
-    if(correct){ 
+    if(this.getAttribute('data-key') === String(ans)){ 
         if(answer.length == 0) {
             level++;            
             updateGameStatus('Good Job! Click Start to begin level ' + level + ' challenge!');
@@ -78,22 +65,9 @@ function updateGameStatus(status) {
 }
 
 async function runQuestion(answer) { 
-    //console.log(answer);
     for(let color of answer) {
-        switch(color) {            
-            case 0:
-                blinkButton(document.getElementById('redButton'), 'red', 'lightsalmon');
-                break;
-            case 1:
-                blinkButton(document.getElementById('greenButton'), 'green', 'lightgreen');
-                break;
-            case 2:
-                blinkButton(document.getElementById('blueButton'), 'blue', 'lightblue');
-                break;
-            case 3:
-                blinkButton(document.getElementById('yellowButton'), 'gold', 'lightgoldenrodyellow');
-                break;
-        }
+        let button = document.querySelector(`button[data-key="${color}"`);
+        button.classList.add(button.getAttribute('data-light'));
         await sleep(1000);
     }
     document.getElementById("start").disabled = false;
