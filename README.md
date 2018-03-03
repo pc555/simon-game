@@ -27,7 +27,6 @@ To run the application:
 
 ## Tools / Techniques
 
-- Object-Oriented JavaScript
 - ES6 Arrow Function Expression
 - HTML data-* Attributes
 - CSS Transitions
