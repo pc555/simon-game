@@ -1,27 +1,25 @@
+//Global variable to store current level, best game level and current answer array
+let level = 1;
+let bestLevel = 1;
+let answer;
+
 window.onload = function() {
     document.getElementById('start').onclick = startGame;
     
-    //Add transitionend to all buttons that need to change color
+    //Add transitionend to all buttons that need to change color back to original color
     document.querySelectorAll('button[data-light]').forEach(button => {
-        const style = button.getAttribute('data-light');
-
         button.addEventListener('transitionend', (e) => {
-            e.target.classList.remove(style);
-        })
-        
+            e.target.classList.remove(button.getAttribute('data-light'));
+    })
         button.addEventListener('click', checkAnswer);
     })
 }
 
-
-
+//Change button color to make blink visual effect
 function blinkButton(button) {
     button.classList.add(button.getAttribute('data-light'));
 }
 
-let level = 1;
-let bestLevel = 1;
-let answer;
 function startGame(){
     updateLevelText();
     updateGameStatus('');
