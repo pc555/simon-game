@@ -50,6 +50,7 @@ function checkAnswer(){
         level = 1; //reset level
         answer = [];
         updateGameStatus('Game Over!! Click Start to restart the game!');
+        updateLevelText();
     }
 }
 
