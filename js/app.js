@@ -15,10 +15,6 @@ window.onload = function() {
     })
 }
 
-//Change button color to make blink visual effect
-function blinkButton(button) {
-    button.classList.add(button.getAttribute('data-light'));
-}
 
 function startGame(){
     updateLevelText();
