@@ -13,13 +13,10 @@ function updateGameStatus(status) {
 	document.getElementById('status').innerHTML = status;
 }
 
-<<<<<<< HEAD
 function updateLevelText() {
 	bestLevel = Math.max(level, bestLevel);
 	document.getElementById('level').innerHTML = `Current Level: ${level}&nbsp;&nbsp;&nbsp;Best Level: ${bestLevel}`;
 }
-=======
->>>>>>> 21e2d7cb478cdd0be17ac636edb79ae4ae516a46
 
 async function runQuestion(answerArr) {
 	for (const color of answerArr) {
